@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+class Car{
+    
+    public :
+    int wheels=0; // e.g 4
+    int seats; // e.g 5 or 6
+    int doors; // e.g 4 or 5
+    string engineType; // v8
+    string modelNo;
+    float fuelCap;
+    
+    Car(){
+        seats=4;
+    }
+    Car(int swheels,float sfuelCap){
+        wheels=swheels;
+        fuelCap = sfuelCap;
+    }
+    Car(int swheels,float sfuelCap,int sseats,int sdoors,string sengineType,string smodelNo){
+        wheels=swheels;
+        fuelCap = sfuelCap;
+        seats =sseats;
+        doors = sdoors;
+        engineType=sengineType;
+        modelNo = smodelNo;
+    }
+
+    void setCarDetails(int swheels,float sfuelCap,int sseats,int sdoors,string sengineType,string smodelNo){
+        wheels=swheels;
+        fuelCap = sfuelCap;
+        seats =sseats;
+        doors = sdoors;
+        engineType=sengineType;
+        modelNo = smodelNo;
+    }
+    void getCarDetails(){
+        cout<<" ---------- Start Car Details -----------"<<endl;
+        cout<<" No of Wheels = "<<wheels<<endl;
+        cout<<" Fuel Capacity = "<<fuelCap<<endl;
+        cout<<" No of Seats = "<<seats<<endl;
+        cout<<" No of Doors = "<<doors<<endl;
+        cout<<" No of Engine Type = "<<engineType<<endl;
+        cout<<" No of Model No = "<<modelNo<<endl;
+        cout<<" ---------- End Car Details -----------"<<endl;
+    }
+    void getFuelCost(float fprice){
+        cout<<" Fuel cost  = "<<(fuelCap*fprice)<<endl;
+    }
+    
+    void setSeats(int sseats){
+         seats =sseats;
+    }
+    int getSeats(){
