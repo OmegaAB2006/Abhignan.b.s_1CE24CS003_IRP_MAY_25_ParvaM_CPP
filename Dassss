@@ -10,14 +10,14 @@ public:
     float texp;
     float tsalary;
 
-    Teacher() {
+    Teacher(){
         tempid = "Un Defined";
         tdept = "Un Assigned";
         texp = 0;
         tsalary = 0;
     }
 
-    Teacher(string s_tname, string s_tdob, string s_tdept, float s_tsalary) {
+    Teacher(string s_tname, string s_tdob, string s_tdept, float s_tsalary){
         tname = s_tname;
         tdob = s_tdob;
         tdept = s_tdept;
@@ -26,7 +26,7 @@ public:
         texp = 0;
     }
 
-    Teacher(string s_tname, string s_tdob, float s_tsalary, string s_tempid, string s_tdept, float s_texp) {
+    Teacher(string s_tname, string s_tdob, float s_tsalary, string s_tempid, string s_tdept, float s_texp){
         tname = s_tname;
         tdob = s_tdob;
         tsalary = s_tsalary;
@@ -35,7 +35,7 @@ public:
         texp = s_texp;
     }
 
-    Teacher(const Teacher &cy_tch) {
+    Teacher(const Teacher &cy_tch){
         tname = cy_tch.tname;
         tdob = cy_tch.tdob;
         tsalary = cy_tch.tsalary;
@@ -44,7 +44,7 @@ public:
         texp = cy_tch.texp;
     }
 
-    void getTeacherDetails() {
+    void getTeacherDetails(){
         cout << " ------ Start Teacher Details --------" << endl;
         cout << " Name : " << tname << endl;
         cout << " DOB : " << tdob << endl;
@@ -55,7 +55,7 @@ public:
         cout << " ------ End Teacher Details --------" << endl;
     }
 
-    void setSalary(float ttsalary) {
+    void setSalary(float ttsalary){
         tsalary = ttsalary;
     }
 
@@ -63,30 +63,42 @@ public:
         return tsalary;
     }
 
-    void adjustSalary() {
-        if (tsalary <= 15000) {
+    void adjustSalary(){
+        if (tsalary <= 15000){
             tsalary *= 2;
-        } else {
+        } 
+        else{
             tsalary -= 5000;
         }
         cout << "Updated Salary: " << tsalary << endl;
     }
 
     void change() {
-        if (tdept == "ISE") {
+        if (tdept == "ISE"){
             tdept = "AIML";
-        } else {
+        } else 
+        {
             tname = "Dr. " + tname;
+        }
+    }
+    
+    void expc() 
+    {
+        if (texp<5) 
+        {
+            texp*=2;
+        } else {
+             texp*=5;;
         }
     }
 };
 
-int main() {
-    Teacher t1("Ann", "28-01-2005", "AIML", 50000);
-    Teacher t2("Ab", "28-01-2005", "ISE", 5000);
-    Teacher t3("Dc", "28-01-2005", "CSE", 53000);
-    Teacher t4("Ef", "28-01-2005", "MECH", 45500);
-    Teacher t5("Gh", "28-01-2005", "AIML", 6500);
+int main(){
+    Teacher t1("Ann", "28-01-2005", "ISE",5,50000);
+    Teacher t2("Ab", "28-01-2005", "ISE",6,5000);
+    Teacher t3("Dc", "28-01-2005", "CSE",7,53000);
+    Teacher t4("Ef", "28-01-2005", "MECH",2,45500);
+    Teacher t5("Gh", "28-01-2005", "AIML",1,6500);
 
     cout << "-------Before changes-------" << endl;
 
@@ -128,6 +140,12 @@ int main() {
     t3.change();
     t4.change();
     t5.change();
+
+    t1.expc();
+    t2.expc();
+    t3.expc();
+    t4.expc();
+    t5.expc();
 
     t1.getTeacherDetails();
     t2.getTeacherDetails();
