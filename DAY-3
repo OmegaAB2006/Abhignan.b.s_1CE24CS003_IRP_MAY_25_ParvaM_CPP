@@ -46,11 +46,38 @@ class Teacher{
         cout<<" Employee ID : "<<tempid<<endl;
         cout<<" Experience : "<<texp<<endl;
         cout<<" Salary  : "<<tsalary<<endl;
-        cout<<" ------ End Teacher Details --------"<<https://codeshare.io/CEC_IRP_25_CPP_C008_DAY3
+        cout<<" ------ End Teacher Details --------"<<endl;
+    }
+    void setSalary(float ttsalary){
+      tsalary=ttsalary;
+    }
+    int getSalary(){
+        return tsalary;
+    } 
 
+     void adjustSalary() {
+        if (tsalary <= 15000) {
+            tsalary *= 2;
+        } else {
+            tsalary -= 5000;
+        }
+    }
+   
+};
+int main() {
+    Teacher t1("Teacher 1", "12-05-1990", 20000.50, "CECTH001", "CSE", 5.3);
+    Teacher t2 = t1;
 
+    t1.adjustSalary();
+    t2.adjustSalary();
 
+    cout << "\n ------ T1 Teacher Details --------" << endl;
+    t1.getTeacherDetails();
 
+    cout << "\n ------ T2 Teacher Details --------" << endl;
+    t2.getTeacherDetails();
 
+    return 0;
+}
 
 
