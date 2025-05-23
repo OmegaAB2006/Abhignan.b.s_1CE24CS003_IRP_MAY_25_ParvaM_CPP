@@ -1,137 +1,139 @@
 #include <iostream>
 using namespace std;
-class Teacher{
-    public:
+
+class Teacher {
+public:
     string tname;
     string tdob;
     string tempid;
     string tdept;
     float texp;
     float tsalary;
-    
-    Teacher(){
-        tempid="Un Defined";
+
+    Teacher() {
+        tempid = "Un Defined";
         tdept = "Un Assigned";
         texp = 0;
+        tsalary = 0;
     }
-    Teacher(string s_tname,string s_tdob,float s_tsalary){
-        tname=s_tname;
-        tdob=s_tdob;
-        tsalary =s_tsalary;
+
+    Teacher(string s_tname, string s_tdob, string s_tdept, float s_tsalary) {
+        tname = s_tname;
+        tdob = s_tdob;
+        tdept = s_tdept;
+        tsalary = s_tsalary;
+        tempid = "N/A";
+        texp = 0;
     }
-    Teacher(string s_tname,string s_tdob,float s_tsalary,string s_tempid,string s_tdept,float s_texp){
-        tname=s_tname;
-        tdob=s_tdob;
-        tsalary =s_tsalary;
-        tempid=s_tempid;
+
+    Teacher(string s_tname, string s_tdob, float s_tsalary, string s_tempid, string s_tdept, float s_texp) {
+        tname = s_tname;
+        tdob = s_tdob;
+        tsalary = s_tsalary;
+        tempid = s_tempid;
         tdept = s_tdept;
         texp = s_texp;
     }
-    
-    Teacher(const Teacher &cy_tch){
-        tname=cy_tch.tname;
-        tdob=cy_tch.tdob;
-        tsalary =cy_tch.tsalary;
-        tempid=cy_tch.tempid;
+
+    Teacher(const Teacher &cy_tch) {
+        tname = cy_tch.tname;
+        tdob = cy_tch.tdob;
+        tsalary = cy_tch.tsalary;
+        tempid = cy_tch.tempid;
         tdept = cy_tch.tdept;
         texp = cy_tch.texp;
     }
-    
-    void getTeacherDetails(){
-        cout<<" ------ Start Teacher Details --------"<<endl;
-        cout<<" Name : "<<tname<<endl;
-        cout<<" DOB : "<<tdob<<endl;
-        cout<<" Department : "<<tdept<<endl;
-        cout<<" Employee ID : "<<tempid<<endl;
-        cout<<" Experience : "<<texp<<endl;
-        cout<<" Salary  : "<<tsalary<<endl;
-        cout<<" ------ End Teacher Details --------"<<endl;
-    }
-    void setSalary(float ttsalary){
-      tsalary=ttsalary;
-    }
-    int getSalary(){
-        return tsalary;
-    } 
 
-     void adjustSalary() {
+    void getTeacherDetails() {
+        cout << " ------ Start Teacher Details --------" << endl;
+        cout << " Name : " << tname << endl;
+        cout << " DOB : " << tdob << endl;
+        cout << " Department : " << tdept << endl;
+        cout << " Employee ID : " << tempid << endl;
+        cout << " Experience : " << texp << endl;
+        cout << " Salary  : " << tsalary << endl;
+        cout << " ------ End Teacher Details --------" << endl;
+    }
+
+    void setSalary(float ttsalary) {
+        tsalary = ttsalary;
+    }
+
+    float getSalary() {
+        return tsalary;
+    }
+
+    void adjustSalary() {
         if (tsalary <= 15000) {
             tsalary *= 2;
         } else {
             tsalary -= 5000;
         }
-        cout<<"SALARY"<<tsalary<<endl;
+        cout << "Updated Salary: " << tsalary << endl;
     }
-     void change() {
-        if (tdept=="ISE") {
-            tdept="AIML"
+
+    void change() {
+        if (tdept == "ISE") {
+            tdept = "AIML";
         } else {
-           "Dr"+tname;
+            tname = "Dr. " + tname;
         }
-      
     }
-   
 };
+
 int main() {
+    Teacher t1("Ann", "28-01-2005", "AIML", 50000);
+    Teacher t2("Ab", "28-01-2005", "ISE", 5000);
+    Teacher t3("Dc", "28-01-2005", "CSE", 53000);
+    Teacher t4("Ef", "28-01-2005", "MECH", 45500);
+    Teacher t5("Gh", "28-01-2005", "AIML", 6500);
 
+    cout << "-------Before changes-------" << endl;
 
-    Teacher t1("ann","28-01-2005","AIML",50000);
-    Teacher t2("ab","28-01-2005","ISE",5000);
-    Teacher t3("dc","28-01-2005","CSE",53000);
-    Teacher t4("ef","28-01-2005","MECH",45500);
-    Teacher t5("gh","28-01-2005","AIML",6500);
-    cout<<"-------Before changes-------"<<endl;
-     
-       cout << "\n ------ T1 Teacher Details --------" << endl;
+    cout << "\n ------ T1 Teacher Details --------" << endl;
     t1.getTeacherDetails();
 
     cout << "\n ------ T2 Teacher Details --------" << endl;
     t2.getTeacherDetails();
-    
-    cout << "\n ------ T1 Teacher Details --------" << endl;
+
+    cout << "\n ------ T3 Teacher Details --------" << endl;
     t3.getTeacherDetails();
 
-    cout << "\n ------ T2 Teacher Details --------" << endl;
+    cout << "\n ------ T4 Teacher Details --------" << endl;
     t4.getTeacherDetails();
-    
-    cout << "\n ------ T1 Teacher Details --------" << endl;
+
+    cout << "\n ------ T5 Teacher Details --------" << endl;
     t5.getTeacherDetails();
-  
-    
 
-    
-    
+    cout << "\n-------After Adjusting Salary-------" << endl;
 
-
-
-     cout<<"-------after changes-------"<<endl;
-
-
-     cout << "\n Teacher 1 " <<endl;
+    cout << "\nTeacher 1:" << endl;
     t1.adjustSalary();
 
-    cout<< "\n Teacher 2" <<endl;
+    cout << "\nTeacher 2:" << endl;
     t2.adjustSalary();
-    
-    cout << "\nTeacher 3" <<endl;
+
+    cout << "\nTeacher 3:" << endl;
     t3.adjustSalary();
 
-    cout << "\nTeacher 4" <<endl;
+    cout << "\nTeacher 4:" << endl;
     t4.adjustSalary();
-    
-    cout << "\nTeacher 5" << endl;
+
+    cout << "\nTeacher 5:" << endl;
     t5.adjustSalary();
-  
-    cout<<"-------name------"<<endl;
+
+    cout << "\n-------After Name/Dept Change-------" << endl;
     t1.change();
     t2.change();
     t3.change();
     t4.change();
     t5.change();
 
-
-
-
+    t1.getTeacherDetails();
+    t2.getTeacherDetails();
+    t3.getTeacherDetails();
+    t4.getTeacherDetails();
+    t5.getTeacherDetails();
 
     return 0;
 }
