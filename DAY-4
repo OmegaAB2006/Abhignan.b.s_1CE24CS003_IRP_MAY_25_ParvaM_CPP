@@ -45,50 +45,54 @@ int main() {
 #include <iostream>
 using namespace std;
 
-class ticket{
+class ticket {
 public:
     string name;
     string gender;
     int age;
-    int phone;
-    
-    void setdetails(string sname,string sgender,int sage,int sphone){
+    long long phone;
+
+    void setdetails(string sname, string sgender, int sage, long long sphone) {
         name=sname;
         gender=sgender;
         age=sage;
-        phone=sphone;
+        phone = sphone;
     }
-    void getdetails(){
-        cout<<"name"<<name<<endl;
-        cout<<"gender"<<gender<<endl;
-        cout<<"age"<<age<<endl;
-        cout<<"phone"<<phone<<endl;
-        cout<<"price"<<tprice<<endl;
-        
-    
-    
+
+    void change() {
+        if (gender=="F"||age <= 12) {
+            tprice-=(tprice*0.05); 
+        } 
+        else if (gender=="M") {
+            tprice+=(tprice*0.18); 
+        } 
+        else {
+            tprice-=(tprice*0.03); 
+        }
+    }
+
+    void getdetails() {
+        cout<<"Name: "<<name<< endl;
+        cout<<"Gender: "<<gender<< endl;
+        cout<< "Age: "<< age << endl;
+        cout<< "Phone: " <<phone<< endl;
+        cout<<"Final Ticket Price: " << tprice<<endl;
+    }
+
 private:
     float tprice=1200;
-    
-   void(){
-       if(gender=="F"||age<=12){
-           
-           tprice*=0.15;
-           
-       }else(gender=="M"){
-          tprice=(tprice*18)/100;
-       }
-    }
-    
-       
 };
 
 int main(){
-    ticket t1;
-    t1.setdetails("afgs","F",18,23324);
-    t1.getdetails();
-    
-    return 0;
+    ticket t1,t2;
 
+    t1.setdetails("Alice", "M", 25, 9876543210);
+    t2.setdetails("Bob", "M", 11, 9123456789);
+    t1.change();
+    t2.change();
+    t1.getdetails();
+    cout << "----------------" << endl;
+    t2.getdetails();
+    return 0;
 }
 
