@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+class ATM {
+private:
+    float balance = 5000000;
+
+
+    bool verifyPIN(int pin) {
+        return pin == 1234; 
+    };
+
+public:
+    void withdraw(int pin, float w_amount) {
+        if (verifyPIN(pin)) {
+            if (balance >= w_amount) {
+                balance -= w_amount;
+                cout << "Withdrawal successful. Remaining balance: " << balance << endl;
+            } else {
+                cout << "Insufficient balance." << endl;
+            }
+        } else {
+            cout << "Access denied... Incorrect PIN." << endl;
+        }
+    }
+};
+
+int main() {
+    ATM a1;
+    a1.withdraw(1234, 5000);  
+    a1.withdraw(2343, 6000);
+    return 0;
