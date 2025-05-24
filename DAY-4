@@ -30,3 +30,65 @@ int main() {
     a1.withdraw(1234, 5000);  
     a1.withdraw(2343, 6000);
     return 0;
+
+
+
+
+
+
+
+
+-------------------------------
+
+
+
+#include <iostream>
+using namespace std;
+
+class ticket{
+public:
+    string name;
+    string gender;
+    int age;
+    int phone;
+    
+    void setdetails(string sname,string sgender,int sage,int sphone){
+        name=sname;
+        gender=sgender;
+        age=sage;
+        phone=sphone;
+    }
+    void getdetails(){
+        cout<<"name"<<name<<endl;
+        cout<<"gender"<<gender<<endl;
+        cout<<"age"<<age<<endl;
+        cout<<"phone"<<phone<<endl;
+        cout<<"price"<<tprice<<endl;
+        
+    
+    
+private:
+    float tprice=1200;
+    
+   void(){
+       if(gender=="F"||age<=12){
+           
+           tprice*=0.15;
+           
+       }else(gender=="M"){
+          tprice=(tprice*18)/100;
+       }
+    }
+    
+       
+};
+
+int main(){
+    ticket t1;
+    t1.setdetails("afgs","F",18,23324);
+    t1.getdetails();
+    
+    return 0;
+
+}
+
