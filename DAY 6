@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+class display{
+public:
+    void disp(int dis){
+    cout<<"result "<<dis<<endl;
+}
+};
+class sqaure:public display{
+public:
+int res=0;
+int sq(int n){
+for(int i=1;i<=n;i++)
+{
+    res=res+n;
+   
+}
+return res;
+
+}
+};
+class addition:public display{
+public:
+int res=0;
+int i=1;
+    int ad(int n){
+        for(i=1;i<=n;i++){
+        res=res+i;
+    
+        }
+        return res;
+}
+         
+    
+};
+
+int main(){
+addition a1;
+sqaure s1;
+display ds;
+//s1.disp(s1.sq(5));
+a1.disp(a1.ad(5));
+cout<<"=================================="<<endl;
+a1.disp(s1.sq(5));
+;
+
+
+    
+}
