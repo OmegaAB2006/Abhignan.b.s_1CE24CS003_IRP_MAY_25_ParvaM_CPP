@@ -47,3 +47,82 @@ a1.disp(s1.sq(5));
 
     
 }
+
+
+___________________________________________________________________________________________________________________________________________
+
+
+
+
+
+
+#include<iostream>
+using namespace std;
+
+class Display{
+public:
+    void disp(int dis) {
+        cout<<"Result: "<<dis<<endl;
+    }
+};
+
+class Add:public Display {
+public:
+    int add(int a) {
+        return a+a;
+    }
+
+    int add(int a, int b) {
+        return a+b;
+    }
+
+    int add(int a,int b,int c) {
+        return a+b+c;
+    }
+};
+
+class Square:public Add{
+public:
+    int sq(int n,int m){
+        int res=0;
+        for (int i=1;i<=m;i++) {
+            res=add(res,n);  
+        }
+        return res;
+        
+    }
+    int sq(int n){
+        int res=0;
+        for (int i=1;i<=n;i++){
+            res=add(res,n);  
+        }
+        return res;
+        
+    }
+};
+
+class Cube:public Square {
+    
+public:
+    int cu(int n){
+        int res = 0;
+        for (int i=1;i<=n;i++) {
+            return sq(sq(n,n),n);
+        }
+
+        
+        
+    }
+};
+
+int main() {
+    Square s1;
+    //s1.sq(5);
+  cout<<"=================================="<<endl;
+    Cube c1;
+    s1.sq(5);
+    s1.disp(c1.cu(5));
+
+    return 0;
+}
+
