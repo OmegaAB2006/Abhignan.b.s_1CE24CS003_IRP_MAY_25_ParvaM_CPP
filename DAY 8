@@ -26,3 +26,86 @@ int main(){
 return 0;
    
  }
+____________________________________________________________________________________________
+
+personality::
+
+#include<iostream>
+using namespace std;
+class name{
+    public:
+    string pname;
+    int total;
+    int sum;
+    int num;
+    void getname(){ 
+    cout<<"Enter your name"<<endl;
+    cin>>pname;
+    }
+ int type(){
+    
+    for(char ch:pname){
+        if(ch!=' '){
+            cout<<ch<<"->"<<(int)ch<<endl;
+            total+=(int)ch;
+        }
+    }
+    total*=2;
+ }
+ int reduceTo(){
+
+    while(num>=10){
+        int sum=0;
+        while(num>0){
+            sum+=num%10;
+            num/=10;
+
+        }
+        num=sum;
+    }
+    
+    return num;
+ }
+int PersonalityTrait(){
+   
+    switch(num){
+        case 1:
+        cout<<"Empathetic"<<endl;
+        break;
+        case 2:
+        cout<<"Introverted"<<endl;
+        break;
+        case 3:
+        cout<<"Extroverted"<<endl;
+        break;
+        case 4:
+        cout<<"Conscientious"<<endl;
+        break;
+        case 5:
+        cout<<"Optimistic"<<endl;
+        break;
+        case 6:
+        cout<<"Agreeable"<<endl;
+        break;
+        case 7:
+        cout<<"Curious"<<endl;
+        break;
+        case 8:
+        cout<<"Resilient"<<endl;
+        break;
+        case 9:
+        cout<<"Impulsive"<<endl;
+        break;
+        default:
+        cout<<"you are special"<<endl;
+
+    }
+}
+};
+int main(){
+    name n1;
+    n1.getname();
+    n1.reduceTo();
+    n1.PersonalityTrait();
+    
+}
