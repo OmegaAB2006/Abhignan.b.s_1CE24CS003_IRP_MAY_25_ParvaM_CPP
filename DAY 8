@@ -1,0 +1,28 @@
+#include<iostream>
+#include<fstream>
+using namespace std;
+int main(){
+ int n;
+ cout<<"Enter number";
+ cin>>n;
+  ofstream outFile("mul.txt");
+ 
+ for(int i=1;i<=n;i++){
+    
+    outFile<<i<<"X"<<n<<"="<<i*n<<endl;
+ }
+ outFile.close();
+
+
+ 
+  ofstream inFile("mul.txt",ios::app);
+ 
+ for(int i=1;i<=n;i++){
+    
+    inFile<<i<<"+"<<n<<"="<<i+n<<endl;
+ }
+ inFile.close();
+
+return 0;
+   
+ }
