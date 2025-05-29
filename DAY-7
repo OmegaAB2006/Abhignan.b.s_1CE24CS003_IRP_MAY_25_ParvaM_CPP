@@ -134,7 +134,6 @@ ________________________________________________________________________________
 
 
 
-
 #include<iostream>
 using namespace std;
 class student{
@@ -147,8 +146,8 @@ class student{
     string designation;
     int age;
     string gender;
-    string  color;
-    string desg;
+    string  color="N/A";
+  
     int a=tname.length();
     string x;
   
@@ -156,14 +155,66 @@ class student{
     string mr="MR.";
     string mrs="MRS.";
 
-    void setName(string cname){
+    void setState(string tstate){
+        this->state=tstate;
+    }
+    string getState(){
+        return  this->state;
+    
+    }
+
+     void setName(string cname){
         this->tname=cname;
     }
     string getName(){
-        return tname;
+        return this->tname;
+    
+    }
+
+         void setCity(string tcity){
+        this->city=tcity;
+    }
+    string getCity(){
+        return this->city;
     
     }
     
+
+         void setDesignation(string tdesg){
+        this->designation=tdesg;
+    }
+    string getDesignation(){
+        return this->designation;
+    
+    }
+
+
+      void setGender(string tged){
+        this->gender=tged;
+    }
+    string getGender(){
+        return this->gender;
+    
+    }
+
+
+
+    
+      void setColor(string tcolor){
+        this->color=tcolor;
+    }
+    string getColor(){
+        return this->color;
+    
+    }
+    
+    void setAge(int tage){
+        this->age=tage;
+        
+    }
+    int getAge(){
+        this->age;
+    }
 
 void setStudnet(){
     
@@ -187,7 +238,7 @@ void setStudnet(){
     cin>>city;
 
     cout<<"Enter Designation: ";
-    cin>>desg;
+    cin>>designation;
 
   
 }
@@ -204,8 +255,8 @@ string Color(){
     if(city=="bengaluru"){
         color="Green";  
     }
-    else if(city=="bengaluru"){
-        color="Green";
+    else if(city=="Hampi"){
+        color="Orange";
 }
   
     else if(city=="Belagavi"){
@@ -221,13 +272,22 @@ return color;
 
 
 void dispalayStudent(){
-    Gender();
-    Color();
-cout<<"  |  "<<this->empid<<"  |  "<<this->tname<<"  |  "<<this->gender<<"  |  "<<this->age<<"  |   "<<this->state<<"  |  "<<this->city<<"  |  "<<" |  "<<"  |  "<<this->desg<<"  |  "<<this->color<<endl;
+    
+cout<<"   |   "<<this->empid<<"   |   "<<this->tname<<"   |   "<<this->gender<<"   |   "<<this->age<<"   |   "<<this->state<<"   |   "<<this->city<<"   |   "<<this->designation<<endl;
 
     }
 
-
+void display2(){
+    Gender();
+    Color();
+    cout<<"Name : "<<tname;
+    cout<<"\nAge : "<<age;
+    cout<<"\nGender : "<<gender;
+    cout<<"\nDesignation : "<<designation;
+    cout<<"\nCity : "<<city;
+    cout<<"\nState : "<<state;
+    cout<<"\nRegion color : "<<color;
+}
     
     
 };
@@ -243,20 +303,26 @@ int main(){
         s[i].setStudnet();
 
      }
-     cout<<"  |   "<<"empid"<<"  |  "<<"  |  "<<"Name"<<"  |  "<<"Gender"<<"  |   "<<"age"<<"  |   "<<"sclass"<<" |   "<<"ssem"<<"  |   "<<"COLOUR"<<"  |  "<<"  |  "<<endl;
+     cout<<"   |   "<<"empid"<<"   |   "<<"   |   "<<"Name"<<"   |   "<<"Gender"<<"   |   "<<"age"<<"   |   "<<"State"<<"   |   "<<"city"<<"   |   "<<"Designation"<<"   |   "<<endl;
      for(int i=0;i<n;i++){
         s[i].dispalayStudent();
        
      }
-     cout<<"--------Name with AR---------"
-    for (int i = 0; i < n; i++) {
-        string checkName = s[i].getName();
+     cout<<"--------Name with AR---------\n\n";
+    for (int i=0;i<n;i++) {
+        string checkName=s[i].getName();
        
         if (checkName.find("ar")!=string::npos) {
-            s[i].dispalayStudent();
+            s[i].display2();
         }
+        cout<<"\n------------------------------------------------------------------------------\n\n";
     }
-
+    cout<<"---------------TEACHER DETAILS AFTER MODIFICATION---------------------------\n\n"<<endl;
+     for(int i=0;i<n;i++){
+        s[i].display2();
+        cout<<"\n_____________________________________________________________________________\n\n";
+     }
+     cout<<"\n-------------------------------------------------------------------\n\n";
     delete[] s;
     return 0;
 }
