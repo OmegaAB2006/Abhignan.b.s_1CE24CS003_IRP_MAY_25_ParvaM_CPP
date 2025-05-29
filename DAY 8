@@ -29,7 +29,6 @@ return 0;
 ____________________________________________________________________________________________
 
 personality::
-
 #include<iostream>
 using namespace std;
 class name{
@@ -50,25 +49,26 @@ class name{
             total+=(int)ch;
         }
     }
-    total*=2;
+   
  }
  int reduceTo(){
+    type();
 
-    while(num>=10){
+    while(total>=10){
         int sum=0;
-        while(num>0){
-            sum+=num%10;
-            num/=10;
+        while(total>0){
+            sum+=total%10;
+            total/=10;
 
         }
-        num=sum;
+        total=sum;
     }
     
-    return num;
+    return total;
  }
 int PersonalityTrait(){
    
-    switch(num){
+    switch(total){
         case 1:
         cout<<"Empathetic"<<endl;
         break;
