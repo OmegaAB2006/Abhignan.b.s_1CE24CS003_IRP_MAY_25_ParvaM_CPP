@@ -109,3 +109,201 @@ int main(){
     n1.PersonalityTrait();
     
 }
+
+
+_____________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class student {
+public:
+    string empid;
+    string tname;
+    string state;
+    string city;
+    string designation;
+    int age;
+    string gender;
+    string color = "N/A";
+
+    string mr = "MR.";
+    string mrs = "MRS.";
+
+    void setState(string tstate) {
+        this->state = tstate;
+    }
+
+    string getState() {
+        return this->state;
+    }
+
+    void setName(string cname) {
+        this->tname = cname;
+    }
+
+    string getName() {
+        return this->tname;
+    }
+
+    void setCity(string tcity) {
+        this->city = tcity;
+    }
+
+    string getCity() {
+        return this->city;
+    }
+
+    void setDesignation(string tdesg) {
+        this->designation = tdesg;
+    }
+
+    string getDesignation() {
+        return this->designation;
+    }
+
+    void setGender(string tged) {
+        this->gender = tged;
+    }
+
+    string getGender() {
+        return this->gender;
+    }
+
+    void setColor(string tcolor) {
+        this->color = tcolor;
+    }
+
+    string getColor() {
+        return this->color;
+    }
+
+    void setAge(int tage) {
+        this->age = tage;
+    }
+
+    int getAge() {
+        return this->age;
+    }
+
+    void setStudent() {
+        cout << "Enter employee id : ";
+        cin >> empid;
+
+        cout << "Enter name : ";
+        cin.ignore();
+        getline(cin, tname);
+
+        cout << "Enter gender: ";
+        cin >> gender;
+
+        cout << "Enter age : ";
+        cin >> age;
+
+        cout << "Enter state : ";
+        cin >> state;
+
+        cout << "Enter city : ";
+        cin >> city;
+
+        cout << "Enter Designation: ";
+        cin >> designation;
+    }
+
+    void Gender() {
+        if (gender == "F") {
+            tname = mrs + tname;
+        } else {
+            tname = mr + tname;
+        }
+    }
+
+    string Color() {
+        if (city == "bengaluru") {
+            color = "Green";
+        } else if (city == "Hampi") {
+            color = "Orange";
+        } else if (city == "Belagavi") {
+            color = "Red";
+        } else if (city == "Mysore") {
+            color = "Yellow";
+        }
+        return color;
+    }
+
+    void displayStudent(ostream &out) {
+        out << "   |   " << empid << "   |   " << tname << "   |   " << gender << "   |   "
+            << age << "   |   " << state << "   |   " << city << "   |   " << designation << endl;
+    }
+
+    void displayDetails(ostream &out) {
+        Gender();
+        Color();
+        out << "Name : " << tname;
+        out << "\nAge : " << age;
+        out << "\nGender : " << gender;
+        out << "\nDesignation : " << designation;
+        out << "\nCity : " << city;
+        out << "\nState : " << state;
+        out << "\nRegion color : " << color << endl;
+    }
+};
+
+int main() {
+    ofstream fout("output.txt");
+
+    student s1;
+
+    int n;
+    cout << "Enter n value for capture students: ";
+    cin >> n;
+
+    student *s = new student[n];
+
+    for (int i = 0; i < n; i++) {
+        cout << "\n-----Enter student----" << i + 1 << endl;
+        s[i].setStudent();
+    }
+
+    cout << "\n   |   empid   |   Name   |   Gender   |   age   |   State   |   city   |   Designation   |\n";
+   
+
+    for (int i = 0; i < n; i++) {
+        s[i].displayStudent(cout);
+        s[i].displayStudent(fout);
+    }
+
+    cout << "\n--------Name with AR---------\n\n";
+   
+
+    for (int i = 0; i < n; i++) {
+        string checkName = s[i].getName();
+
+        if (checkName.find("ar") != string::npos) {
+            s[i].displayDetails(cout);
+            s[i].displayDetails(fout);
+        }
+        cout << "\n------------------------------------------------------------------------------\n\n";
+       
+    }
+
+    cout << "\n---------------TEACHER DETAILS AFTER MODIFICATION---------------------------\n\n";
+  
+    for (int i = 0; i < n; i++) {
+        s[i].displayDetails(cout);
+        fout << "\n";
+        s[i].displayDetails(fout);
+        fout << "\n_____________________________________________________________________________\n\n";
+    }
+
+    cout << "\n-------------------------------------------------------------------\n\n";
+ 
+
+    delete[] s;
+    fout.close();
+
+    return 0;
+}
+
