@@ -1,0 +1,148 @@
+#include <iostream>
+using namespace std;
+
+class CUETCandidate {
+public:
+    string cuetID;
+    string name;
+    string dob;
+    string gender;
+    string state;
+    string category;
+    string examCity;
+    string examLanguage;
+    string preferredUniversity;
+    string region_color = "NA";
+
+    void setCuetId(string id) {
+        this->cuetID = id;
+    }
+
+    string getCuetId() {
+        return this->cuetID;
+    }
+
+    void setName(string name) {
+        this->name = name;
+    }
+
+    string getName() {
+        return this->name;
+    }
+
+    void setCity(string city) {
+        this->examCity = city;
+    }
+
+    string getCity() {
+        return this->examCity;
+    }
+
+    void setRegionColor(string color) {
+        this->region_color = color;
+    }
+
+    string getRegionColor() {
+        return this->region_color;
+    }
+
+    void regCandidate() {
+        cout << "Enter CUET ID: ";
+        cin >> cuetID;
+        cout << "Enter Name: ";
+        cin.ignore();
+        getline(cin, name);
+        cout << "Enter Date of Birth (DD/MM/YYYY): ";
+        getline(cin, dob);
+        cout << "Enter Gender: ";
+        cin >> gender;
+        cout << "Enter State: ";
+        cin >> state;
+        cout << "Enter Category: ";
+        cin >> category;
+        cout << "Enter Exam City: ";
+        cin >> examCity;
+        cout << "Enter Exam Language: ";
+        cin >> examLanguage;
+        cout << "Enter Preferred University: ";
+        cin.ignore();
+        getline(cin, preferredUniversity);
+    }
+
+    void displayCandidate() {
+        cout << "\n-----------------------------------------------" << endl;
+        cout << "CUET ID: " << cuetID << " , Name: " << name << endl;
+        cout << "DOB: " << dob << " , Gender: " << gender << endl;
+        cout << "State: " << state << " , Category: " << category << endl;
+        cout << "City: " << examCity << " , Language: " << examLanguage << endl;
+        cout << "Preferred University: " << preferredUniversity << endl;
+        cout << "Region Color: " << region_color << endl;
+        cout << "-----------------------------------------------\n" << endl;
+    }
+};
+
+int main() {
+    int n;
+    string checkName = "";
+    cout << "Enter number of CUET candidates: ";
+    cin >> n;
+
+    CUETCandidate* c = new CUETCandidate[n];
+
+    for (int i = 0; i < n; i++) {
+        cout << "\n------Enter CUET Candidate - " << i + 1 << " ------\n";
+        c[i].regCandidate();
+    }
+
+    for (int i = 0; i < n; i++) {
+        if (c[i].getCity() == "Bengaluru") {
+            c[i].setRegionColor("Green");
+        } else if (c[i].getCity() == "Mysuru") {
+            c[i].setRegionColor("Yellow");
+        } else if (c[i].getCity() == "Belagavi") {
+            c[i].setRegionColor("Red");
+        } else if (c[i].getCity() == "Chikkamangaluru") {
+            c[i].setRegionColor("Blue");
+        } else {
+            c[i].setRegionColor("White");
+        }
+    }
+
+    cout << "\n--------- All CUET Candidate Records ----------------" << endl;
+    for (int i = 0; i < n; i++) {
+        c[i].displayCandidate();
+    }
+
+    string searchName;
+    cout << "Enter part of name to search CUET Candidate: ";
+    cin.ignore();
+    getline(cin, searchName);
+
+    cout << "\n--------- Start CUET Candidates with name containing \"" << searchName << "\" ----------------" << endl;
+    for (int i = 0; i < n; i++) {
+        checkName = c[i].getName();
+        if (checkName.find(searchName) != string::npos) {
+            c[i].displayCandidate();
+        }
+    }
+    cout << "--------- End Search ----------------" << endl;
+
+    string searchID, checkID;
+    cout << "Enter CUET ID to EDIT Candidate Record: ";
+    getline(cin, searchID);
+
+    for (int i = 0; i < n; i++) {
+        checkID = c[i].getCuetId();
+        if (checkID.find(searchID) != string::npos) {
+            c[i].regCandidate();
+        }
+    }
+
+    cout << "\n--------- Final CUET Candidate Records After Modification ----------------" << endl;
+    for (int i = 0; i < n; i++) {
+        c[i].displayCandidate();
+    }
+
+    delete[] c;
+    return 0;
+}
