@@ -1,0 +1,23 @@
+string compress(){
+    string result;
+    int n=str.length();
+    
+    for (int i=0;i<n;) {
+        char current=str[i];
+        int count=1;
+        int j=i+1;
+        
+        while (j<n&&str[j]==current) {
+            count++;
+            j++;
+        }
+ 
+        result+=current;
+        result+=to_string(count);
+        
+        i=j;
+    }
+    
+    return result;
+}
+
